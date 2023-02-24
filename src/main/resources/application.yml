@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: elasticsearch-redis-demo
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:4407/testdb?createDatabaseIfNotExists=true&useSSL=false
+    username: root
+    password: 1234
+logging:
+  level:
+    root: info
+

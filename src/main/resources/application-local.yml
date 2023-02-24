@@ -1,0 +1,11 @@
+server:
+  port: 9090
+spring:
+  config:
+    activate:
+      on-profile:
+        - local
+  datasource:
+    url: jdbc:mysql://localhost:4407/testdb?createDatabaseIfNotExists=true&useSSL=false&useUnicode=true&characterEncoding=utf8&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
