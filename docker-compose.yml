@@ -1,0 +1,45 @@
+version: "3.3"
+services:
+#  mysqldb:
+#    image: mysql:8
+#    container_name: mysqldb-container
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+#      - MYSQL_TCP_PORT=${DB_PORT}
+#    ports:
+#      - "${DB_PORT}:${DB_PORT}"
+#    command: --default-authentication-plugin=mysql_native_password
+#    volumes:
+#      - ./init-sql-scripts.sql:/docker-entrypoint-initdb.d/init-sql-scripts.sql
+#    networks:
+#      - demo
+  elasticsearch-service:
+    image: elasticsearch:8.6.2
+    container_name: elasticsearch-container
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "${ELASTICSEARCH_PORT}:${ELASTICSEARCH_PORT}"
+    networks:
+      - demo
+#  demo-service:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#      args:
+#        DB_PORT_FOR_DOCKER_FILE: ${DB_PORT}
+#    environment:
+#      - DB_DBNAME=${DB_DBNAME}
+#      - DB_HOST=${DB_HOST}
+#      - DB_PORT=${DB_PORT}
+#      - DB_USERNAME=${DB_USERNAME}
+#      - DB_PASSWORD=${DB_PASSWORD}
+#      - DB_URL=${DB_URL}
+#    ports:
+#      - "${SERVER_PORT}:${SERVER_PORT}"
+#    networks:
+#      - demo
+networks:
+  demo:
+    driver: bridge

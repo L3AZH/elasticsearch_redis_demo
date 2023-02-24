@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -32,3 +32,17 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register("removeOldBuild") {
+	doLast{
+		def path = "${rootDir}/build/libs"
+		def folder = new File(path.toString())
+		if (folder.exists()){
+			delete path
+			println "Deleted: $path"
+		} else {
+			println "Can't Delete the path: ${rootDir}/build/libs/ Not exist !!"
+		}
+	}
+}
+
